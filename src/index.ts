@@ -84,20 +84,6 @@ function init() {
     item.addEventListener("blur", handleBlur);
   });
 
-  // Maps a value belonging to a range (in_min to in_max) to another range (out_min to out_max)
-  // https://stackoverflow.com/a/5732390
-  const map = (
-    value: number,
-    in_min: number,
-    in_max: number,
-    out_min: number,
-    out_max: number
-  ) => {
-    return (
-      ((value - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min
-    );
-  };
-
   const animate = () => {
     requestAnimationFrame(animate);
 

@@ -1,7 +1,7 @@
 {
-  "name": "threejs-template",
+  "name": "art-showcase-2020",
   "version": "1.0.0",
-  "description": "Three.js w/ TypeScript Template",
+  "description": "Art Showcase 2020",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -30,6 +30,7 @@
     "webpack-merge": "^5.7.3"
   },
   "dependencies": {
+    "normalize.css": "^8.0.1",
     "three": "^0.123.0"
   }
 }

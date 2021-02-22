@@ -10,10 +10,46 @@ html {
   /* line-height: 1; */
 }
 
+@media (max-width: 900px) {
+  html {
+    font-size: 56.25%;
+  }
+}
+
+@media (max-width: 800px) {
+  html {
+    font-size: 1vw;
+  }
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 1.2vw;
+  }
+}
+
+/* @media (max-width: 800px) {
+  html {
+    font-size: 40.0%;
+  }
+}
+
+@media (max-width: 500px) {
+  html {
+    font-size: 31.875%;
+  }
+}
+
+@media (max-width: 400px) {
+  html {
+    font-size: 24%;
+  }
+} */
+
 body {
   position: relative;
   height: 100vh;
-  overflow: hidden;  
+  overflow: hidden;
 }
 
 #c {
@@ -76,6 +112,12 @@ nav ul {
   display: inline-block;
   margin-left: 20%;
   font-size: 8rem;
+}
+
+@media (max-width: 600px) {
+  .nav-link {
+    margin-left: 10%;
+  }
 }
 
 .nav-item:focus .nav-link {

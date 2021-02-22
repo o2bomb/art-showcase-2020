@@ -52,11 +52,11 @@ nav ul {
   list-style-type: none;
 }
 
-nav ul button {
+.nav-item {
   position: relative;
 }
 
-nav ul button::before {
+.nav-item::before {
   content: "";
   position: absolute;
   top: 0;
@@ -67,8 +67,8 @@ nav ul button::before {
   transition: width 0.2s ease-in;
 }
 
-nav ul button:hover::before,
-nav ul button:focus::before {
+.nav-item:hover::before,
+.nav-item:focus::before {
   width: 0.5rem;
 }
 
@@ -78,7 +78,7 @@ nav ul button:focus::before {
   font-size: 8rem;
 }
 
-nav ul button:focus .nav-link {
+.nav-item:focus .nav-link {
   outline: 1px solid var(--color-text);
 }
 
@@ -87,8 +87,8 @@ nav ul button:focus .nav-link {
   position: relative;
   display: inline;
   background-image: linear-gradient(
-      var(--color-background),
-      var(--color-background)
+      transparent,
+      transparent
     ),
     linear-gradient(var(--color-text), var(--color-text));
   background-size: 100% 100%, 0 100%;
@@ -100,8 +100,8 @@ nav ul button:focus .nav-link {
   transition: color .2s steps(1, jump-end);
 }
 
-nav ul button:hover .nav-link-sub,
-nav ul button:focus .nav-link-sub {
+.nav-item:hover .nav-link-sub,
+.nav-item:focus .nav-link-sub {
   color: var(--color-text);
   animation: reveal .4s;
 }
@@ -118,4 +118,33 @@ nav ul button:focus .nav-link-sub {
   100% {
     background-size: 100% 100%, 0 100%;
   }
+}
+
+/* HOVERABLES */
+.hover {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30rem;
+  height: 30rem;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hover-image-wrapper {
+  overflow: hidden;
+}
+
+.hover-image {
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.hover-image-wrapper,
+.hover-image {
+  width: 100%;
+  height: 100%;
+  position: relative;
 }

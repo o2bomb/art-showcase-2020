@@ -1,7 +1,6 @@
 import "normalize.css";
 import "./style.css";
 import { lerp } from "./utils/lerp";
-import { clamp } from "./utils/clamp";
 
 window.addEventListener("load", init, false);
 

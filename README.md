@@ -1,5 +1,5 @@
-# Three.js w/ TypeScript Template
-This is project contains boilerplate code for a Three.js application with type checking. webpack is used for compiling and bundling all code, including imported npm packages.
+# Art Showcase 2020
+ A showcase of all of my favourite art pieces from 2020
 
 ## Running the project
 1. `yarn install` to download required packages

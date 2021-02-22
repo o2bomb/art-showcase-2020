@@ -1,10 +1,11 @@
 :root {
   --color-text: black;
+  --color-background: white;
 }
 
 html {
   /* font-family: 'Permanent Marker', cursive; */
-  font-family: 'Righteous', cursive;
+  font-family: "Righteous", cursive;
   font-size: 62.5%;
   /* line-height: 1; */
 }
@@ -63,12 +64,12 @@ nav ul button::before {
   bottom: 0;
   background-color: var(--color-text);
   width: 0;
-  transition: width .2s ease-in;
+  transition: width 0.2s ease-in;
 }
 
 nav ul button:hover::before,
 nav ul button:focus::before {
-  width: .5rem;
+  width: 0.5rem;
 }
 
 .nav-link {
@@ -82,11 +83,39 @@ nav ul button:focus .nav-link {
 }
 
 .nav-link-sub {
-  display: none;
+  /* https://nickymeuleman.netlify.app/blog/css-animated-wrapping-underline */
+  position: relative;
+  display: inline;
+  background-image: linear-gradient(
+      var(--color-background),
+      var(--color-background)
+    ),
+    linear-gradient(var(--color-text), var(--color-text));
+  background-size: 100% 100%, 0 100%;
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat, no-repeat;
   font-size: 3rem;
+
+  color: transparent;
+  transition: color .2s steps(1, jump-end);
 }
 
 nav ul button:hover .nav-link-sub,
 nav ul button:focus .nav-link-sub {
-  display: initial;
+  color: var(--color-text);
+  animation: reveal .4s;
+}
+
+@keyframes reveal {
+  0% {
+    background-size: 100% 100%, 0 100%;
+  }
+
+  50% {
+    background-size: 0 100%, 100% 100%;
+  }
+
+  100% {
+    background-size: 100% 100%, 0 100%;
+  }
 }

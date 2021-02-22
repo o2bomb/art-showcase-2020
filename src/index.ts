@@ -71,9 +71,19 @@ function init() {
   };
 
   const handleFocus = (e) => {
+    const target = e.currentTarget as Element;
+    const hoverItem = target.querySelector<HTMLDivElement>(".hover");
+
+    hoverItem.style.opacity = "1";
+    hoverItem.style.top = `${hoverItem.offsetHeight / 2}px`;
+    hoverItem.style.left = `${hoverItem.offsetWidth / 2}px`;
   };
 
   const handleBlur = (e) => {
+    const target = e.currentTarget as Element;
+    const hoverItem = target.querySelector<HTMLDivElement>(".hover");
+
+    hoverItem.style.opacity = "0";
   };
 
   navItems.forEach((item) => {

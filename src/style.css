@@ -28,24 +28,6 @@ html {
   }
 }
 
-/* @media (max-width: 800px) {
-  html {
-    font-size: 40.0%;
-  }
-}
-
-@media (max-width: 500px) {
-  html {
-    font-size: 31.875%;
-  }
-}
-
-@media (max-width: 400px) {
-  html {
-    font-size: 24%;
-  }
-} */
-
 body {
   position: relative;
   height: 100vh;
@@ -56,6 +38,19 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
+}
+
+/* CURSOR */
+#cursor {
+  position: fixed;
+  top: -100px;
+  left: -100px;
+  transform: translate(-50%, -50%);
+
+  height: 3rem;
+  width: 3rem;
+  border: 1px solid black;
+  border-radius: 50%;
 }
 
 /* NAVIGATION */

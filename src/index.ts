@@ -28,6 +28,8 @@ function init() {
     cursor.currY = e.clientY;
   });
 
+  // CURSOR
+  const cursorItem = document.getElementById("cursor");
   // NAV ITEMS
   const navItems = document.querySelectorAll(".nav-item");
   const navLinks = document.querySelectorAll(".nav-link");
@@ -55,6 +57,8 @@ function init() {
     const hoverItem = target.querySelector<HTMLDivElement>(".hover");
 
     hoverItem.style.opacity = "1";
+    cursorItem.style.opacity = "0";
+
     cursor.currHoverItem = hoverItem;
     cursor.currNavItem = e.currentTarget;
   };
@@ -66,6 +70,8 @@ function init() {
     const hoverImage = hoverItem.querySelector(".hover-image");
 
     hoverItem.style.opacity = "0";
+    cursorItem.style.opacity = "1";
+
     cursor.currHoverItem = undefined;
     cursor.currNavItem = undefined;
   };
@@ -104,6 +110,8 @@ function init() {
       const y = cursor.prevY - boundingRect.top;
       cursor.currHoverItem.style.top = `${y}px`;    
     }
+    cursorItem.style.left = `${cursor.prevX}px`;
+    cursorItem.style.top = `${cursor.prevY}px`;
   };
   animate();
 }

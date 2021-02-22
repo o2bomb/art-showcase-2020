@@ -22,6 +22,21 @@ body {
 }
 
 /* NAVIGATION */
+button {
+  display: block;
+  width: 100%;
+  text-align: unset;
+  padding: 0;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
 nav {
   width: 100%;
   position: absolute;
@@ -36,11 +51,11 @@ nav ul {
   list-style-type: none;
 }
 
-nav ul li {
+nav ul button {
   position: relative;
 }
 
-nav ul li::before {
+nav ul button::before {
   content: "";
   position: absolute;
   top: 0;
@@ -51,21 +66,27 @@ nav ul li::before {
   transition: width .2s ease-in;
 }
 
-nav ul li:hover::before {
+nav ul button:hover::before,
+nav ul button:focus::before {
   width: .5rem;
 }
 
 .nav-link {
+  display: inline-block;
   margin-left: 20%;
   font-size: 8rem;
 }
 
-
-.nav-link:hover .nav-link-sub {
-  display: initial;
+nav ul button:focus .nav-link {
+  outline: 1px solid var(--color-text);
 }
 
 .nav-link-sub {
   display: none;
   font-size: 3rem;
+}
+
+nav ul button:hover .nav-link-sub,
+nav ul button:focus .nav-link-sub {
+  display: initial;
 }

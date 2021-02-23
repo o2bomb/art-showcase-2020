@@ -3,6 +3,24 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
+const generateHtmlPlugin = (title) => {
+  return new HtmlWebpackPlugin({
+    template: path.resolve(__dirname, `../src/pages/${title.toLowerCase()}.html`),
+    filename: `${title}.html`,
+    minify: true,
+  });
+}
+
+const populateHtmlPlugins = (pagesArray) => {
+  const res = [];
+  pagesArray.forEach(page => {
+    res.push(generateHtmlPlugin(page));
+  })
+  return res;
+}
+
+const pages = ["pingpong"];
+
 module.exports = {
   entry: path.resolve(__dirname, "../src/index.ts"),
   output: {
@@ -18,6 +36,7 @@ module.exports = {
       minify: true,
     }),
     new MiniCSSExtractPlugin(),
+    ...populateHtmlPlugins(pages)
   ],
   module: {
     rules: [

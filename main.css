@@ -435,6 +435,9 @@ nav ul {
 
 .nav-item {
   position: relative;
+  display: block;
+  outline: none;
+  color: var(--color-text);
 }
 
 .nav-item::before {
@@ -457,6 +460,11 @@ nav ul {
   display: inline-block;
   margin-left: 20%;
   font-size: 8rem;
+  overflow-y: hidden;
+}
+
+.nav-item:focus .nav-link {
+  outline: 1px solid var(--color-text);
 }
 
 @media (max-width: 600px) {
@@ -465,8 +473,19 @@ nav ul {
   }
 }
 
-.nav-item:focus .nav-link {
-  outline: 1px solid var(--color-text);
+.nav-link-main {
+  display: inline-block;
+  animation: slide-up-reveal .5s ease-in-out;
+}
+
+@keyframes slide-up-reveal {
+  0% {
+    transform: translate(0, 100%);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
 }
 
 .nav-link-sub {
@@ -484,16 +503,16 @@ nav ul {
   font-size: 3rem;
 
   color: transparent;
-  transition: color .2s steps(1, jump-end);
+  transition: color .2s .2s;
 }
 
 .nav-item:hover .nav-link-sub,
 .nav-item:focus .nav-link-sub {
   color: var(--color-text);
-  animation: reveal .4s;
+  animation: cover-reveal .4s;
 }
 
-@keyframes reveal {
+@keyframes cover-reveal {
   0% {
     background-size: 100% 100%, 0 100%;
   }

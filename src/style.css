@@ -205,3 +205,9 @@ nav ul {
   height: 100%;
   position: relative;
 }
+
+/* ART PAGE */
+.heading {
+  font-size: 8rem;
+  font-weight: 400;
+}

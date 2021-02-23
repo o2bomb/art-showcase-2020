@@ -29,7 +29,7 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin({
-      patterns: [{ from: path.resolve(__dirname, "../static") }],
+      patterns: [{ from: path.resolve(__dirname, "../src/assets") }],
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "../src/index.html"),
@@ -61,12 +61,12 @@ module.exports = {
 
       // Images
       {
-        test: /\.(jpg|png|gif|svg)$/,
+        test: /\.(png|svg|jpg|jpeg|gif)$/,
         use: [
           {
             loader: "file-loader",
             options: {
-              outputPath: "assets/images/",
+              name: '[name].[ext]?[hash]',
             },
           },
         ],
@@ -79,7 +79,7 @@ module.exports = {
           {
             loader: "file-loader",
             options: {
-              outputPath: "assets/fonts/",
+              name: '[name].[ext]?[hash]',
             },
           },
         ],

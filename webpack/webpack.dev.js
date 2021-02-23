@@ -1,6 +1,7 @@
 const { merge } = require("webpack-merge");
 const ip = require("internal-ip");
 const portFinderSync = require("portfinder-sync");
+const path = require("path");
 
 const commonConfiguration = require("./webpack.common.js");
 
@@ -13,7 +14,7 @@ module.exports = merge(commonConfiguration, {
   devServer: {
     host: "0.0.0.0",
     port: portFinderSync.getPort(8080),
-    contentBase: "./dist",
+    contentBase: path.join(__dirname, "dist"),
     watchContentBase: true,
     open: true,
     https: false,

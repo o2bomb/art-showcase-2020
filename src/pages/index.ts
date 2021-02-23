@@ -1,6 +1,6 @@
 import "normalize.css";
-import "./style.css";
-import { lerp } from "./utils/lerp";
+import "./index.css";
+import { lerp } from "../utils/lerp";
 
 window.addEventListener("load", init, false);
 

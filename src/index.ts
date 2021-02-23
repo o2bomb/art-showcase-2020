@@ -14,8 +14,8 @@ interface CursorData {
   currNavItem: HTMLButtonElement;
 }
 const cursor: CursorData = {
-  currX: 0,
-  currY: 0,
+  currX: -100,
+  currY: -100,
   prevX: 0,
   prevY: 0,
   currHoverItem: undefined,
@@ -57,7 +57,7 @@ function init() {
     const hoverItem = target.querySelector<HTMLDivElement>(".hover");
 
     hoverItem.style.opacity = "1";
-    cursorItem.style.opacity = "0";
+    cursorItem.style.display = "none";
 
     cursor.currHoverItem = hoverItem;
     cursor.currNavItem = e.currentTarget;
@@ -70,7 +70,7 @@ function init() {
     const hoverImage = hoverItem.querySelector(".hover-image");
 
     hoverItem.style.opacity = "0";
-    cursorItem.style.opacity = "1";
+    cursorItem.style.display = "initial";
 
     cursor.currHoverItem = undefined;
     cursor.currNavItem = undefined;

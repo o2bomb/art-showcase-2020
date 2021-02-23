@@ -28,12 +28,6 @@ html {
   }
 }
 
-body {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-}
-
 #c {
   position: absolute;
   width: 100%;
@@ -54,7 +48,7 @@ body {
 }
 
 /* NAVIGATION */
-button {
+/* button {
   display: block;
   width: 100%;
   text-align: unset;
@@ -67,14 +61,15 @@ button {
 
 button:focus {
   outline: none;
-}
+} */
 
 nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
   width: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  overflow: hidden;
 }
 
 nav ul {

@@ -1,0 +1,17 @@
+h1 {
+  font-size: 6rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
+}
+
+.feature-image {
+  height: 80%;
+}

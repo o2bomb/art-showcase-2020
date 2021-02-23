@@ -40,7 +40,7 @@ const populateEntryPoints = (pagesArray) => {
   return res;
 }
 
-const pages = ["index", "pingpong"];
+const pages = ["index", "pingpong", "ribbon", "warrior", "goldenfishes"];
 
 module.exports = {
   entry: populateEntryPoints(pages),

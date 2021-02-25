@@ -13,6 +13,8 @@ function init() {
   // NAV ITEMS
   const navItems = document.querySelectorAll(".nav-item");
   const navLinks = document.querySelectorAll(".nav-link");
+  const navLinkMains = document.querySelectorAll(".nav-link-main");
+  const navLinkSubs = document.querySelectorAll(".nav-link-sub");
   let imageUrls: string[] = [];
   navLinks.forEach((n) => {
     // Get image url of each nav link
@@ -72,11 +74,19 @@ function init() {
     hoverItem.style.opacity = "0";
   };
 
+  const handleClick = (e: MouseEvent) => {
+    e.preventDefault();
+    navItems.forEach(n => {
+      n.classList.add("hide");
+    })
+  }
+
   navItems.forEach((item) => {
     item.addEventListener("mouseenter", handleMouseEnter);
     item.addEventListener("mouseleave", handleMouseLeave);
     item.addEventListener("focus", handleFocus);
     item.addEventListener("blur", handleBlur);
+    item.addEventListener("click", handleClick);
   });
 
   const animate = () => {

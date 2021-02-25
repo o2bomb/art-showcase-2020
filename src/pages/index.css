@@ -4,19 +4,6 @@
   height: 100%;
 }
 
-/* CURSOR */
-#cursor {
-  position: fixed;
-  top: -100px;
-  left: -100px;
-  transform: translate(-50%, -50%);
-
-  height: 3rem;
-  width: 3rem;
-  border: 1px solid black;
-  border-radius: 50%;
-}
-
 /* NAVIGATION */
 /* button {
   display: block;

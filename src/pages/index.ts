@@ -2,35 +2,14 @@ import "normalize.css";
 import "./base.css";
 import "./index.css";
 import { lerp } from "../utils/lerp";
+import Cursor from "../ts/Cursor";
 
 window.addEventListener("load", init, false);
 
-// Current position of mouse
-interface CursorData {
-  currX: number;
-  currY: number;
-  prevX: number;
-  prevY: number;
-  currHoverItem: HTMLDivElement;
-  currNavItem: HTMLButtonElement;
-}
-const cursor: CursorData = {
-  currX: -100,
-  currY: -100,
-  prevX: 0,
-  prevY: 0,
-  currHoverItem: undefined,
-  currNavItem: undefined,
-};
-
 function init() {
-  document.addEventListener("mousemove", (e) => {
-    cursor.currX = e.clientX;
-    cursor.currY = e.clientY;
-  });
-
   // CURSOR
-  const cursorItem = document.getElementById("cursor");
+  const cursor = new HomeCursor();
+  cursor.bindDomElement();
   // NAV ITEMS
   const navItems = document.querySelectorAll(".nav-item");
   const navLinks = document.querySelectorAll(".nav-link");
@@ -58,7 +37,7 @@ function init() {
     const hoverItem = target.querySelector<HTMLDivElement>(".hover");
 
     hoverItem.style.opacity = "1";
-    cursorItem.style.display = "none";
+    cursor.cursorEl.style.display = "none";
 
     cursor.currHoverItem = hoverItem;
     cursor.currNavItem = e.currentTarget;
@@ -71,7 +50,7 @@ function init() {
     const hoverImage = hoverItem.querySelector(".hover-image");
 
     hoverItem.style.opacity = "0";
-    cursorItem.style.display = "initial";
+    cursor.cursorEl.style.display = "initial";
 
     cursor.currHoverItem = undefined;
     cursor.currNavItem = undefined;
@@ -103,16 +82,27 @@ function init() {
   const animate = () => {
     requestAnimationFrame(animate);
 
-    cursor.prevX = lerp(cursor.prevX, cursor.currX, 0.08);
-    cursor.prevY = lerp(cursor.prevY, cursor.currY, 0.08);
+    cursor.animate();
     if (cursor.currHoverItem && cursor.currNavItem) {
       const boundingRect = cursor.currNavItem.getBoundingClientRect();
-      cursor.currHoverItem.style.left = `${cursor.prevX}px`;
-      const y = cursor.prevY - boundingRect.top;
+      cursor.currHoverItem.style.left = `${cursor.getPrevX()}px`;
+      const y = cursor.getPrevY() - boundingRect.top;
       cursor.currHoverItem.style.top = `${y}px`;    
     }
-    cursorItem.style.left = `${cursor.prevX}px`;
-    cursorItem.style.top = `${cursor.prevY}px`;
+    cursor.cursorEl.style.left = `${cursor.getPrevX()}px`;
+    cursor.cursorEl.style.top = `${cursor.getPrevY()}px`;
   };
   animate();
+}
+
+class HomeCursor extends Cursor {
+  currHoverItem: HTMLElement;
+  currNavItem: HTMLElement;
+
+  constructor() {
+    super();
+
+    this.currHoverItem = undefined;
+    this.currNavItem= undefined;
+  }
 }

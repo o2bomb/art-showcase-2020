@@ -19,7 +19,8 @@ function init() {
   cursor.bindDomElement(cursorEl);
 
   const heading = document.querySelector(".heading");
-  const featureImage = document.querySelector(".feature-image");
+  const featureImage = document.querySelector<HTMLImageElement>(".feature-image");
+  const featureImageSource = featureImage.attributes["data-source"].value;
 
   const handleMouseEnter = (e: Event) => {
     const target = e.currentTarget as HTMLElement;
@@ -40,11 +41,11 @@ function init() {
     cursor.cursorEl.style.width = "6rem";
     cursor.cursorEl.style.height = "6rem";
     cursor.cursorEl.style.cursor = "pointer";
-    cursor.cursorEl.style.backgroundColor = "black";
+    cursor.cursorEl.style.backgroundColor = "var(--color-text)";
     cursor.cursorEl.style.pointerEvents = "auto";
     cursor.cursorInnerEl.style.display = "initial";
 
-    cursor.currFeatureImage = target;
+    cursor.currFeatureImage = undefined;
   };
 
   const handleClick = (e: MouseEvent) => {
@@ -63,13 +64,44 @@ function init() {
 
   heading.addEventListener("mouseenter", handleMouseEnter);
   heading.addEventListener("mouseleave", handleMouseLeave);
-  featureImage.addEventListener("mouseenter", handleMouseEnter);
-  featureImage.addEventListener("mouseleave", handleMouseLeave);
   cursor.cursorEl.addEventListener("click", handleClick);
+
+  let boundingRectImage = featureImage.getBoundingClientRect();
+  setTimeout(() => {
+    // Update bounding rectangle when image animation finishes
+    boundingRectImage = featureImage.getBoundingClientRect();
+  }, 1000)
+
+  let boundingRectHeading = heading.getBoundingClientRect();
+  setTimeout(() => {
+    // Update bounding rectangle when heading animation finishes
+    boundingRectHeading = heading.getBoundingClientRect();
+  }, 1000)
 
   const animate = () => {
     requestAnimationFrame(animate);
-
+    if (cursor.getCurrX() >= boundingRectImage.left && cursor.getCurrX() <= boundingRectImage.right &&
+        cursor.getCurrY() >= boundingRectImage.top && cursor.getCurrY() <= boundingRectImage.bottom) {
+      cursor.cursorEl.style.border = "1px solid var(--color-background)";
+      cursor.cursorEl.style.backgroundColor = "var(--color-background)";
+      cursor.cursorInnerEl.style.color = "var(--color-text)";
+  
+      cursor.cursorInnerEl.innerText = "source";
+      cursorEl.href = featureImageSource;
+    } else if (
+      cursor.getCurrX() >= boundingRectHeading.left && cursor.getCurrX() <= boundingRectHeading.right &&
+      cursor.getCurrY() >= boundingRectHeading.top && cursor.getCurrY() <= boundingRectHeading.bottom
+    ) {
+      cursor.cursorEl.style.backgroundColor = "transparent";
+    } else {
+      cursor.cursorEl.style.border = "1px solid var(--color-text)";
+      cursor.cursorInnerEl.style.color = "var(--color-background)";
+      cursor.cursorEl.style.backgroundColor = "var(--color-text)";
+      
+      cursor.cursorInnerEl.innerText = "back";
+      cursorEl.href = "index.html";
+    }
+    
     cursor.animate();
   };
   animate();
@@ -95,9 +127,9 @@ class GalleryCursor extends Cursor {
     this.cursorInnerEl.style.left = "50%";
     this.cursorInnerEl.style.transform = "translate(-50%, -50%)";
     this.cursorInnerEl.style.fontSize = "2rem";
-    this.cursorInnerEl.style.color = "white";
+    this.cursorInnerEl.style.color = "var(--color-background)";
     this.cursorInnerEl.style.pointerEvents = "none";
-    this.cursorEl.style.backgroundColor = "black";
+    this.cursorEl.style.backgroundColor = "var(--color-text)";
     this.cursorEl.style.width = "6rem";
     this.cursorEl.style.height = "6rem";
     this.cursorEl.style.cursor = "pointer";

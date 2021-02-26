@@ -378,6 +378,70 @@ html {
   }
 }
 
+@keyframes slide-up-reveal {
+  0% {
+    transform: translate(0, 100%);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes slide-down-hide {
+  0% {
+    transform: translate(0, 0);
+  }
+  
+  100% {
+    transform: translate(0, 100%);
+  }
+}
+
+@keyframes cover-reveal {
+  0% {
+    background-size: 100% 100%, 0 100%;
+  }
+
+  50% {
+    background-size: 0 100%, 100% 100%;
+  }
+
+  100% {
+    background-size: 100% 100%, 0 100%;
+  }
+}
+
+@keyframes fade-in-reveal {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out-hide {
+  0% {
+    opacity: 1;
+  }
+  
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes scale-up-reveal {
+  0% {
+    transform: scale(.5, .5);
+  }
+
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
 #c {
   position: absolute;
   width: 100%;
@@ -472,26 +536,6 @@ nav ul {
   animation: slide-down-hide .5s cubic-bezier(.6,.04,.98,.34) forwards;
 }
 
-@keyframes slide-up-reveal {
-  0% {
-    transform: translate(0, 100%);
-  }
-
-  100% {
-    transform: translate(0, 0);
-  }
-}
-
-@keyframes slide-down-hide {
-  0% {
-    transform: translate(0, 0);
-  }
-  
-  100% {
-    transform: translate(0, 100%);
-  }
-}
-
 .nav-link-sub {
   /* https://nickymeuleman.netlify.app/blog/css-animated-wrapping-underline */
   position: relative;
@@ -519,20 +563,6 @@ nav ul {
 .nav-item.hide .nav-link-sub {
   color: transparent;
   animation: none;
-}
-
-@keyframes cover-reveal {
-  0% {
-    background-size: 100% 100%, 0 100%;
-  }
-
-  50% {
-    background-size: 0 100%, 100% 100%;
-  }
-
-  100% {
-    background-size: 100% 100%, 0 100%;
-  }
 }
 
 /* HOVERABLES */

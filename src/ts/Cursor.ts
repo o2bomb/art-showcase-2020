@@ -47,14 +47,18 @@ export default class Cursor {
    * Creates a div in the DOM that will represent the cursor.
    * Only one cursor div can exist at a time
    */
-  bindDomElement() {
+  bindDomElement(inCursorEl?: HTMLElement) {
     if (this.cursorEl) {
       return;
     }
-    // Create cursor div with id of "cursor"
-    this.cursorEl = document.createElement('div');
-    document.body.appendChild(this.cursorEl);
+    if (!inCursorEl) {
+      this.cursorEl = document.createElement('div');
+    } else {
+      this.cursorEl = inCursorEl;
+    }
+    // Create cursor element with id of "cursor"
     this.cursorEl.id = "cursor";
+    document.body.appendChild(this.cursorEl);
     // Style it
     this.cursorEl.style.position = "fixed";
     this.cursorEl.style.top = "-100px";

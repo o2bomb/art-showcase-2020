@@ -1,18 +1,10 @@
 import "normalize.css";
 import "../base.css";
 import "../gallery.css";
-import Cursor from "../../ts/Cursor";
+import "../gallery";
 
 window.addEventListener("load", init, false);
 
 function init() {
-  const cursor = new Cursor();
-  cursor.bindDomElement();
 
-  const animate = () => {
-    requestAnimationFrame(animate);
-    
-    cursor.animate();
-  }
-  animate();
 }

@@ -10,6 +10,10 @@ h1 .heading-text {
   animation: slide-up-reveal .7s cubic-bezier(.25,.46,.45,.94);
 }
 
+h1.hide .heading-text {
+  animation: slide-down-hide .5s cubic-bezier(.6,.04,.98,.34) forwards;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -21,4 +25,8 @@ h1 .heading-text {
 .feature-image {
   height: 80%;
   animation: fade-in-reveal .5s, scale-up-reveal .5s cubic-bezier(.25,.46,.45,.94);
+}
+
+.feature-image.hide {
+  animation: fade-out-hide .5s cubic-bezier(.6,.04,.98,.34) forwards;
 }

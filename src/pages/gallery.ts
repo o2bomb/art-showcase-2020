@@ -1,3 +1,5 @@
+import "./base.css";
+import "./gallery.css";
 import Cursor from "../ts/Cursor";
 
 window.addEventListener("load", init, false);
@@ -11,6 +13,7 @@ function init() {
 
   const heading = document.querySelector(".heading");
   const featureImage = document.querySelector(".feature-image");
+
   const handleMouseEnter = (e: Event) => {
     const target = e.currentTarget as HTMLElement;
 
@@ -37,16 +40,31 @@ function init() {
     cursor.currFeatureImage = target;
   };
 
+  const handleClick = (e: MouseEvent) => {
+    e.preventDefault();
+    featureImage.classList.add("hide");
+    heading.classList.add("hide");
+    cursor.cursorEl.style.width = "0";
+    cursor.cursorEl.style.height = "0";
+
+    // Redirect to destination
+    const destination = (e.currentTarget as HTMLElement).getAttribute("href");
+    setTimeout(() => {
+      window.location.href = destination;
+    }, 700);
+  };
+
   heading.addEventListener("mouseenter", handleMouseEnter);
   heading.addEventListener("mouseleave", handleMouseLeave);
   featureImage.addEventListener("mouseenter", handleMouseEnter);
   featureImage.addEventListener("mouseleave", handleMouseLeave);
+  cursor.cursorEl.addEventListener("click", handleClick);
 
   const animate = () => {
     requestAnimationFrame(animate);
-    
+
     cursor.animate();
-  }
+  };
   animate();
 }
 
@@ -77,7 +95,8 @@ class GalleryCursor extends Cursor {
     this.cursorEl.style.height = "6rem";
     this.cursorEl.style.cursor = "pointer";
     this.cursorEl.style.pointerEvents = "auto";
-    this.cursorEl.style.transition = "background-color .2s, width .2s, height .2s"
+    this.cursorEl.style.transition =
+      "background-color .2s, width .2s, height .2s";
     this.cursorEl.appendChild(this.cursorInnerEl);
   }
 }

@@ -76,9 +76,16 @@ function init() {
 
   const handleClick = (e: MouseEvent) => {
     e.preventDefault();
+    // Hide each nav item
     navItems.forEach(n => {
       n.classList.add("hide");
-    })
+    });
+
+    // Redirect to destination
+    const destination = (e.currentTarget as HTMLElement).getAttribute('href');
+    setTimeout(() => {
+      window.location.href = destination;
+    }, 700);
   }
 
   navItems.forEach((item) => {

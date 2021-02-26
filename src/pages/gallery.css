@@ -2,6 +2,12 @@ h1 {
   font-size: 6rem;
   font-weight: 400;
   margin: 0;
+  overflow: hidden;
+}
+
+h1 .heading-text {
+  display: inline-block;
+  animation: slide-up-reveal .7s cubic-bezier(.25,.46,.45,.94);
 }
 
 .container {
@@ -14,4 +20,5 @@ h1 {
 
 .feature-image {
   height: 80%;
+  animation: fade-in-reveal .5s, scale-up-reveal .5s cubic-bezier(.25,.46,.45,.94);
 }

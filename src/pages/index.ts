@@ -7,6 +7,13 @@ import Cursor from "../ts/Cursor";
 window.addEventListener("load", init, false);
 
 function init() {
+  window.addEventListener("pageshow", (e: PageTransitionEvent) => {
+    // Reset animations
+    navItems.forEach(n => {
+      n.classList.remove("hide");
+    });
+  });
+
   // CURSOR
   const cursor = new HomeCursor();
   cursor.bindDomElement();
@@ -87,11 +94,6 @@ function init() {
       window.location.href = destination;
     }, 700);
   }
-
-  // Reset animations
-  navItems.forEach(n => {
-    n.classList.remove("hide");
-  });
 
   navItems.forEach((item) => {
     item.addEventListener("mouseenter", handleMouseEnter);

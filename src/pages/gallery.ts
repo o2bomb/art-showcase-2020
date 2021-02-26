@@ -5,10 +5,17 @@ import Cursor from "../ts/Cursor";
 window.addEventListener("load", init, false);
 
 function init() {
+  window.addEventListener("pageshow", (e: PageTransitionEvent) => {
+    featureImage.classList.remove("hide");
+    heading.classList.remove("hide");
+    cursor.cursorEl.style.width = "6rem";
+    cursor.cursorEl.style.height = "6rem";
+  })
+
   // CURSOR
   const cursor = new GalleryCursor();
   const cursorEl = document.createElement("a");
-  cursorEl.href = "/index.html";
+  cursorEl.href = "index.html";
   cursor.bindDomElement(cursorEl);
 
   const heading = document.querySelector(".heading");

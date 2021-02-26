@@ -8,7 +8,7 @@ function init() {
   // CURSOR
   const cursor = new GalleryCursor();
   const cursorEl = document.createElement("a");
-  cursorEl.href = "/";
+  cursorEl.href = "/index.html";
   cursor.bindDomElement(cursorEl);
 
   const heading = document.querySelector(".heading");

@@ -88,6 +88,11 @@ function init() {
     }, 700);
   }
 
+  // Reset animations
+  navItems.forEach(n => {
+    n.classList.remove("hide");
+  });
+
   navItems.forEach((item) => {
     item.addEventListener("mouseenter", handleMouseEnter);
     item.addEventListener("mouseleave", handleMouseLeave);
